@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS  # Import Flask-CORS
+from flask_cors import CORS
 from collections import Counter
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+
+# Explicitly allow the frontend origin
+CORS(app, resources={r"/generate": {"origins": "https://danytheog.github.io"}})
 
 # -------------------------------------------------
 # 1. DICTIONARY LOADING
